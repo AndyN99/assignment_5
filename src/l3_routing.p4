@@ -347,10 +347,27 @@ control MyIngress(inout headers hdr,
               Set the opcode to ARP_OP_REPLY.
               Change the target MAC to the original ARP packet's sender MAC.
               Then swap the sender IP and target IP of the ARP header */
+
+        macAddr_t original_sndMAC = hdr.arp.sndMAC;
+        ipAddr_t original_sndIP = hdr.arp.sndIP;
+
+        hdr.arp.op = ARP_OP_REPLY;
+
+        hdr.arp.sndMAC = sndMAC;
+        hdr.arp.sndIP = hdr.arp.tgtIP; 
+
+        hdr.arp.tgtMAC = original_sndMAC;
+        hdr.arp.tgtIP = original_sndIP;
+
         /* 2. Complete an Ethernet header.  
               Change the dest MAC to the original packet's src MAC 
               Then set the src MAC to sndMAC */
+
+        hdr.ethernet.dstAddr = hdr.ethernet.srcAddr;
+        hdr.ethernet.srcAddr = sndMAC;    
         /* 3. Set egress_spec to the ingress_port */
+
+        standard_metadata.egress_spec = standard_metadata.ingress_port;
     }
     
     action clone_packet() {
