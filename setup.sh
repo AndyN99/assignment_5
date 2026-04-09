@@ -2,15 +2,15 @@
 echo "Remove source code in the labs directory"
 rm labs/part1_icmp/shared/controller.py
 rm labs/part2_arp/shared/controller.py
-rm labs/part3_rip/shared/controller.py
+# rm labs/part3_rip/shared/controller.py
 rm labs/part1_icmp/shared/l3_routing.p4
 rm labs/part2_arp/shared/l3_routing.p4
-rm labs/part3_rip/shared/l3_routing.p4
+# rm labs/part3_rip/shared/l3_routing.p4
 
 echo "Link source code to each lab's shared directory"
 ln src/controller.py labs/part1_icmp/shared/controller.py
 ln src/controller.py labs/part2_arp/shared/controller.py
-ln src/controller.py labs/part3_rip/shared/controller.py
+# ln src/controller.py labs/part3_rip/shared/controller.py
 ln src/l3_routing.p4 labs/part1_icmp/shared/l3_routing.p4
 ln src/l3_routing.p4 labs/part2_arp/shared/l3_routing.p4
-ln src/l3_routing.p4 labs/part3_rip/shared/l3_routing.p4
+# ln src/l3_routing.p4 labs/part3_rip/sharbash run_router.shbash run_router.shed/l3_routing.p4
